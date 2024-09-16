@@ -17,7 +17,7 @@
         // Sử dụng alert (hộp thoại văn bản) để hiển thị biến
         alert(message);
 
-        // Bài tập 2,3
+        // Bài tập 2,3,4
         function displayName() {
             //Tạo biến nhập họ tên, tạo prompt rồi gán giá trị đã nhập vào biến
             let inputName = prompt('Hãy nhập họ tên.', document.getElementById('name'));
@@ -73,10 +73,26 @@
                     break;
                 }
             } while (isNaN(inputBirthYear) || inputBirthYear > currentYear || inputBirthYear.length !== 4);
+        }
 
+        //Bài tập 5
+        //Tạo function hiển thị message
+        function showMessage() {
+            //Tạo biến và gán element bằng ID
+            let messageDiv = document.getElementById('message');
+            //Chuyển hiển thị của thẻ div sang visible
+            messageDiv.style.display = 'block';
         }
     </script>
 </head>
+
+<style>
+    /* Ẩn đi thẻ div */
+    #message {
+        display: none;
+        /* Ẩn phần tử */
+    }
+</style>
 
 <body>
     <div class="container">
@@ -143,6 +159,12 @@
         <!-- Tạo input và custom button -->
         <input class="btn btn-primary" type="button" value="Summit" onclick="displayName()">
 
+        <hr>
+
+        <!-- Thẻ div chứa thông báo -->
+        <div id="message">Đây là thông báo của bạn!</div>
+        <!-- Nút để hiển thị thông báo -->
+        <input class="btn btn-primary" type="button" value="Click me" onclick="showMessage()"></input>
     </div>
 </body>
 
