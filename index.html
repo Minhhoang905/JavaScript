@@ -20,12 +20,12 @@
         // Bài tập 2,3,4
         function displayName() {
             //Tạo biến nhập họ tên, tạo prompt rồi gán giá trị đã nhập vào biến
-            let inputName = prompt('Hãy nhập họ tên.', document.getElementById('name'));
+            let inputName = prompt('Hãy nhập họ tên.');
             //Hiển thị giá trị đã nhập vào thẻ p có id = "name"    
             document.getElementById('name').innerHTML = inputName;
 
             //Tạo biến nhập thành phố, tạo prompt rồi gán giá trị đã nhập vào biến
-            let inputCity = prompt('Hãy nhập thành phố.', document.getElementById('city'));
+            let inputCity = prompt('Hãy nhập thành phố.');
             //Hiển thị giá trị đã nhập vào thẻ p có id = "city"
             document.getElementById('city').innerHTML = inputCity;
 
@@ -35,7 +35,7 @@
 
             do {
                 //Tạo prompt rồi gán giá trị đã nhập vào biến 
-                inputPhoneNumber = prompt('Hãy nhập số điện thoại (tối đa 12 chữ số)', document.getElementById('phoneNumber'))
+                inputPhoneNumber = prompt('Hãy nhập số điện thoại (tối đa 12 chữ số)')
                 //Tạo if-else để check các điều kiện của số
                 if (isNaN(inputPhoneNumber) || inputPhoneNumber.length === 0) {
                     // Check xem có phải number và độ dài nhập vào != 0
@@ -49,7 +49,7 @@
                     //Thoát khỏi vòng lặp
                     break;
                 }
-            } while (isNaN(inputPhoneNumber) || inputPhoneNumber.length === 0 || inputPhoneNumber.length !== 11 || inputPhoneNumber.length !== 12);
+            } while (true);
 
             //Tạo biến nhập năm sinh
             let inputBirthYear;
@@ -58,7 +58,7 @@
             //Tạo vòng lặp do-while để không nhập đúng thì hiển thị alert và nhập lại
             do {
                 //Tạo prompt rồi gán giá trị đã nhập vào biến
-                inputBirthYear = prompt('Hãy nhập năm sinh', document.getElementById('birthYear'));
+                inputBirthYear = prompt('Hãy nhập năm sinh');
                 //Tạo if-else để check điều kiện
                 if (isNaN(inputBirthYear) || inputBirthYear > currentYear) {
                     //Nếu năm sinh > năm hiện tại hoặc năm sinh != giá trị số
@@ -72,7 +72,7 @@
                     //Thoát khỏi vòng lặp
                     break;
                 }
-            } while (isNaN(inputBirthYear) || inputBirthYear > currentYear || inputBirthYear.length !== 4);
+            } while (true);
         }
 
         //Bài tập 5
