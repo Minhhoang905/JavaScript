@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASM1</title>
+    <!-- bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Bài tập 1
+
+        // Định nghĩa biến và gán thông tin vào biến đó
+        let message = 'Chào mừng bạn đến với ứng dụng JavaScript đầu tiên';
+        // Sử dụng alert (hộp thoại văn bản) để hiển thị biến
+        alert(message);
+
+        // Bài tập 2,3,4
+        function displayName() {
+            //Tạo biến nhập họ tên, tạo prompt rồi gán giá trị đã nhập vào biến
+            let inputName = prompt('Hãy nhập họ tên.');
+            //Hiển thị giá trị đã nhập vào thẻ p có id = "name"    
+            document.getElementById('name').innerHTML = inputName;
+
+            //Tạo biến nhập thành phố, tạo prompt rồi gán giá trị đã nhập vào biến
+            let inputCity = prompt('Hãy nhập thành phố.');
+            //Hiển thị giá trị đã nhập vào thẻ p có id = "city"
+            document.getElementById('city').innerHTML = inputCity;
+
+            //Tạo biến nhập số điện thoại
+            let inputPhoneNumber;
+            //Tạo vòng lặp do-while để không nhập đúng SDT thì hiển thị alert và nhập lại
+
+            do {
+                //Tạo prompt rồi gán giá trị đã nhập vào biến 
+                inputPhoneNumber = prompt('Hãy nhập số điện thoại (tối đa 12 chữ số)')
+                //Tạo if-else để check các điều kiện của số
+                if (isNaN(inputPhoneNumber) || inputPhoneNumber.length === 0) {
+                    // Check xem có phải number và độ dài nhập vào != 0
+                    alert('Số điện thoại phải là kiểu chữ số và không được để trống');
+                } else if (inputPhoneNumber.length !== 11 && inputPhoneNumber.length !== 12) {
+                    //Check nếu độ dài != 11 hoặc != 12
+                    alert('Số điện thoại phải là 11 hoặc 12 chữ số');
+                } else {
+                    //Hiển thị giá trị đã nhập vào thẻ p có id = "phoneNumber"
+                    document.getElementById('phoneNumber').innerHTML = inputPhoneNumber;
+                    //Thoát khỏi vòng lặp
+                    break;
+                }
+            } while (true);
+
+            //Tạo biến nhập năm sinh
+            let inputBirthYear;
+            //Tạo hằng số để lấy năm hiện tại (dùng hằng số để lấy giá trị cố định, không thể thay đổi)
+            const currentYear = new Date().getFullYear();
+            //Tạo vòng lặp do-while để không nhập đúng thì hiển thị alert và nhập lại
+            do {
+                //Tạo prompt rồi gán giá trị đã nhập vào biến
+                inputBirthYear = prompt('Hãy nhập năm sinh');
+                //Tạo if-else để check điều kiện
+                if (isNaN(inputBirthYear) || inputBirthYear > currentYear) {
+                    //Nếu năm sinh > năm hiện tại hoặc năm sinh != giá trị số
+                    alert('Năm sinh phải là kiểu giá trị số và không được lớn hơn năm hiện tại.');
+                } else if (inputBirthYear.length !== 4) {
+                    //Nếu năm sinh != 4 chữ số
+                    alert('Năm sinh phải là 4 chữ số')
+                } else {
+                    //Hiển thị năm sinh ra HTML ra thẻ p có id = 'birthYear'
+                    document.getElementById('birthYear').innerHTML = inputBirthYear
+                    //Thoát khỏi vòng lặp
+                    break;
+                }
+            } while (true);
+        }
+
+        //Bài tập 5
+        //Tạo function hiển thị message
+        function showMessage() {
+            //Tạo biến và gán element bằng ID
+            let messageDiv = document.getElementById('message');
+            //Chuyển hiển thị của thẻ div sang visible
+            messageDiv.style.display = 'block';
+        }
+    </script>
+</head>
+
+<style>
+    /* Ẩn đi thẻ div */
+    #message {
+        display: none;
+        /* Ẩn phần tử */
+    }
+</style>
+
+<body>
+    <div class="container">
+        <section>
+            <!-- row họ tên-->
+            <div class="row ">
+                <!-- Tên tiêu đề -->
+                <h3 class="text-center">Bài tập ASM1</h3>
+                <!-- Column họ tên-->
+                <div class="col-3">
+                    <p>Họ tên:</p>
+                </div>
+                <!-- Column hiển thị thông tin đã nhập từ prompt -->
+                <div class="col-9">
+                    <p id="name" style="color: rgb(156, 0, 96);"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- row thành phố -->
+        <section>
+            <div class="row ">
+                <!-- Column họ tên (chỉ chiếm 1 phần) -->
+                <div class="col-3">
+                    <p>Thành phố:</p>
+                </div>
+                <!-- Column hiển thị thông tin đã nhập từ prompt-->
+                <div class="col-9">
+                    <p id="city" style="color: rgb(110, 254, 0);"></p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- row số điện thoại -->
+        <section>
+            <div class="row ">
+                <!-- Column họ tên -->
+                <div class="col-3">
+                    <p>Số điện thoại:</p>
+                </div>
+                <!-- Column hiển thị thông tin đã nhập từ prompt -->
+                <div class="col-9">
+                    <p id="phoneNumber" style="color: rgb(60, 0, 255);"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- row năm sinh -->
+        <section>
+            <div class="row ">
+                <!-- Column họ tên (chỉ chiếm 1 phần) -->
+                <div class="col-3">
+                    <p>Năm sinh:</p>
+                </div>
+                <!-- Column hiển thị thông tin đã nhập từ prompt -->
+                <div class="col-9">
+                    <p id="birthYear" style="color: rgb(8, 7, 6);"></p>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+        <!-- Tạo input và custom button -->
+        <input class="btn btn-primary" type="button" value="Summit" onclick="displayName()">
+
+        <hr>
+
+        <!-- Thẻ div chứa thông báo -->
+        <div id="message">Đây là thông báo của bạn!</div>
+        <!-- Nút để hiển thị thông báo -->
+        <input class="btn btn-primary" type="button" value="Click me" onclick="showMessage()"></input>
+    </div>
+</body>
+
+</html>
