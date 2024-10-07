@@ -52,6 +52,91 @@
             </tbody>
         </table>
     </div>
+    <script>
+        function addRow() {
+            //Lấy element tbody nơi thêm các dòng mới 
+            let tbody = document.getElementById("tbody");
+            // Tạo 1 hàng mới trong table (tạo element tr)
+            let tr1 = document.createElement("tr");
+
+            // Lấy thông tin (String) ở input "name"
+            let name = document.getElementById("name").value;
+            // Lấy thông tin (String) ở input "dayOfBirth"
+            let dayOfBirth = document.getElementById("dayOfBirth").value;
+            // Lấy giá trị (value) ở input "math"
+            let math = document.getElementById("math").value;
+            // Lấy giá trị (value) ở input "physic"
+            let physic = document.getElementById("physic").value;
+            // Lấy giá trị (value) ở input "chemical"
+            let chemical = document.getElementById("chemical").value;
+
+            //Tạo function check điều kiện nhập điểm các môn học
+            function isValidScore(score) {
+                return score >= 0 && score <= 10.0;
+            }
+
+            // Kiểm tra tính hợp lệ của điểm toán
+            if (!isValidScore(math)) {
+                alert("Điểm toán phải là ký tự số, phải lớn hơn 0 và nhỏ hơn 10.");
+                return;
+            }
+            // Kiểm tra tính hợp lệ của điểm lý
+            if (!isValidScore(physic)) {
+                alert("Điểm lý phải là ký tự số, phải lớn hơn 0 và nhỏ hơn 10.")
+                return;
+            }
+            // Kiểm tra tính hợp lệ của điểm hóa
+            if (!isValidScore(chemical)) {
+                alert("Điểm Hóa phải là ký tự số, phải lớn hơn 0 và nhỏ hơn 10.")
+                return;
+            }
+
+
+            //Thêm hàng mới vào tbody 
+            tbody.append(tr1);
+
+            // Tạo 1 ô (td) mới cho "tên"
+            let tdName = document.createElement("td");
+            // Thêm ô "tên" vào hàng mới (tr) trong bảng
+            tr1.append(tdName);
+            //Hiển thị giá trị từ input "tên" vào ô vừa mới tạo
+            tdName.innerHTML = name;
+
+            //Tạo 1 ô (td) mới cho "DOB"
+            let tdDayOfBirth = document.createElement("td");
+            //Thêm ô "DOB" vào hàng mới (tr) trong bảng
+            tr1.append(tdDayOfBirth);
+            //Hiển thị giá trị từ input "DOB" vào ô vừa mới tạo
+            tdDayOfBirth.innerHTML = dayOfBirth;
+
+            //Tạo 1 ô (td) mới cho "điểm toán"
+            let tdMath = document.createElement("td");
+            //Thêm ô "điểm toán" vào hàng mới (tr) trong bảng
+            tr1.append(tdMath);
+            //Hiển thị giá trị từ input "điểm toán" vào ô vừa mới tạo
+            tdMath.innerHTML = math;
+
+            //Tạo 1 ô (td) mới cho "điểm lý"
+            let tdPhysics = document.createElement("td");
+            //Thêm ô "điểm lý" vào hàng mới (tr) trong bảng
+            tr1.append(tdPhysics);
+            //Hiển thị giá trị từ input "điểm lý" vào ô vừa mới tạo
+            tdPhysics.innerHTML = physic;
+
+            //Tạo 1 ô (td) mới cho "điểm hóa"
+            let tdChemical = document.createElement("td");
+            //Thêm ô "điểm hóa" vào hàng mới (tr) trong bảng
+            tr1.append(tdChemical);
+            //Hiển thị giá trị từ input "điểm hóa" vào ô vừa mới tạo
+            tdChemical.innerHTML = chemical;
+        }
+        //Lấy elelement ID của buton "input"
+        let inputButton = document.getElementById("input");
+        //Gán function + thuộc tính "onclick" button 
+        inputButton.onclick = addRow;
+
+
+    </script>
 
 </body>
 
