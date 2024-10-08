@@ -28,7 +28,7 @@
         <!-- Tạo các button theo từng chức năng -->
         <br>
         <button id="input">Nhập</button>
-        <button>Tính điểm trung bình</button>
+        <button id="caculate-average">Tính điểm trung bình</button>
         <button>Xác định học lực</button>
         <hr>
 
@@ -53,7 +53,12 @@
         </table>
     </div>
     <script>
+
+        //Tạo biến index
+        let index = 1;
+
         function addRow() {
+
             //Lấy element tbody nơi thêm các dòng mới 
             let tbody = document.getElementById("tbody");
             // Tạo 1 hàng mới trong table (tạo element tr)
@@ -95,6 +100,10 @@
             //Thêm hàng mới vào tbody 
             tbody.append(tr1);
 
+            //Tạo ID cho tr (nhằm lấy data từ HTML)
+            tr1.id = index;
+
+
             // Tạo 1 ô (td) mới cho "tên"
             let tdName = document.createElement("td");
             // Thêm ô "tên" vào hàng mới (tr) trong bảng
@@ -115,6 +124,8 @@
             tr1.append(tdMath);
             //Hiển thị giá trị từ input "điểm toán" vào ô vừa mới tạo
             tdMath.innerHTML = math;
+            //Tạo id cho điểm toán
+            tdMath.id = "MathID" + index;
 
             //Tạo 1 ô (td) mới cho "điểm lý"
             let tdPhysics = document.createElement("td");
@@ -122,6 +133,8 @@
             tr1.append(tdPhysics);
             //Hiển thị giá trị từ input "điểm lý" vào ô vừa mới tạo
             tdPhysics.innerHTML = physic;
+            //Tạo id cho điểm lý
+            tdPhysics.id = "PhysicsID" + index;
 
             //Tạo 1 ô (td) mới cho "điểm hóa"
             let tdChemical = document.createElement("td");
@@ -129,12 +142,68 @@
             tr1.append(tdChemical);
             //Hiển thị giá trị từ input "điểm hóa" vào ô vừa mới tạo
             tdChemical.innerHTML = chemical;
+            //Tạo id cho điểm hóa
+            tdChemical.id = "ChemicalID" + index;
+
+            //Tạo 1 ô (td) mới cho "điểm trung bình"
+            let tdAverage = document.createElement("td");
+            //Thêm ô "điểm trung bình" vào hàng mới (tr) trong bảng
+            tr1.append(tdAverage);
+            //Tạo id cho điểm trung bình
+            tdAverage.id = "AverageID" + index;
+
+            //Tăng giá trị id + 1
+            index = index + 1;
+
         }
-        //Lấy elelement ID của buton "input"
+
+        //Chức năng tính điểm trung bình
+        function Averange() {
+            //Tạo vòng lặp với i = 1 (khởi điểm với index = 1)
+            for (let i = 1; i < index; i++) {
+                //Lấy element của điểm toán + i 
+                let math = document.getElementById("MathID" + i);
+                //Lấy element của điểm lý + i 
+                let physics = document.getElementById("PhysicsID" + i);
+                //Lấy element của điểm hóa + i 
+                let chemical = document.getElementById("ChemicalID" + i);
+                //Lấy element của điểm trung bình + i 
+                let average = document.getElementById("AverageID" + i);
+
+                //Tính điểm trung bình và gán vào table
+                average.innerHTML = (math.innerHTML - (- physics.innerHTML) - (- chemical.innerHTML)) / 3;
+            }
+
+            // //Tạo vòng lặp với i = 1 (khởi điểm với index = 1)
+            // for (let i = 1; i < index; i++) {
+            //     //Lấy element của điểm toán + i, in ra (dạng String) rồi parseFloat
+            //     let math = parseFloat(document.getElementById("MathID" + i).innerHTML);
+            //     //Lấy element của điểm lý + i, in ra (dạng String) rồi parseFloat 
+            //     let physics = parseFloat(document.getElementById("PhysicsID" + i).innerHTML);
+            //     //Lấy element của điểm hóa + i, in ra (dạng String) rồi parseFloat 
+            //     let chemical = parseFloat(document.getElementById("ChemicalID" + i).innerHTML);
+            //     //Lấy element của điểm trung bình + i 
+            //     let average = document.getElementById("AverageID" + i);
+
+            //     //Tính điểm trung bình và gán vào table
+            //     let avg = (math + physics + chemical) / 3;
+            //     //In ra điểm trung bình vào element Id "AverageID"
+            //     average.innerHTML = avg;
+            // }
+
+        }
+
+
+
+        //Lấy elelement ID của buton "nhập"
         let inputButton = document.getElementById("input");
         //Gán function + thuộc tính "onclick" button 
         inputButton.onclick = addRow;
 
+        //Lấy elelement ID của buton "Tính điểm trung bình"
+        let AverageButton = document.getElementById("caculate-average");
+        //Gán function + thuộc tính "onclick" button 
+        AverageButton.onclick = Averange;
 
     </script>
 
