@@ -28,8 +28,8 @@
         <!-- Tạo các button theo từng chức năng -->
         <br>
         <button id="input">Nhập</button>
-        <button id="caculate-average">Tính điểm trung bình</button>
-        <button>Xác định học lực</button>
+        <button id="calculate-average">Tính điểm trung bình</button>
+        <button id="determine-rank">Xác định học lực</button>
         <hr>
 
         <!-- Tạo table -->
@@ -58,7 +58,6 @@
         let index = 1;
 
         function addRow() {
-
             //Lấy element tbody nơi thêm các dòng mới 
             let tbody = document.getElementById("tbody");
             // Tạo 1 hàng mới trong table (tạo element tr)
@@ -96,13 +95,11 @@
                 return;
             }
 
-
             //Thêm hàng mới vào tbody 
             tbody.append(tr1);
 
             //Tạo ID cho tr (nhằm lấy data từ HTML)
             tr1.id = index;
-
 
             // Tạo 1 ô (td) mới cho "tên"
             let tdName = document.createElement("td");
@@ -152,9 +149,15 @@
             //Tạo id cho điểm trung bình
             tdAverage.id = "AverageID" + index;
 
+            //Tạo 1 ô (td) mới cho "học lực"
+            let tdRank = document.createElement("td");
+            //Thêm ô "học lực" vào hàng mới (tr) trong bảng
+            tr1.append(tdRank);
+            //Tạo id cho "học lực"
+            tdRank.id = "RankID" + index;
+
             //Tăng giá trị id + 1
             index = index + 1;
-
         }
 
         //Chức năng tính điểm trung bình
@@ -190,21 +193,53 @@
             //     //In ra điểm trung bình vào element Id "AverageID"
             //     average.innerHTML = avg;
             // }
-
         }
 
+        //Chức năng xác định và highlight học lực giỏi (>=8.0) 
+        function highlightRank() {
+            //Tạo vòng lặp 
+            for (let i = 1; i < index; i++) {
+                //In ra điểm trung bình từ các row, đồng thời parseFloat điểm trung bình
+                let average = parseFloat(document.getElementById("AverageID" + i).innerHTML);
+                //Lấy element id (i) của tr
+                let tr = document.getElementById(i);
+                //Lấy element của học lực + i 
+                let tdRank = document.getElementById("RankID" + i);
 
+                //Tạo if-else để xác định học lực
+                if (average >= 8.0) {
+                    //Dùng thuộc tính "classList" để ddd thêm class từ CSS vào hàng (tr)
+                    tr.classList.add("highlight");
+                    //In ra học lực vào id của ô (td) trong hàng (tr) đó
+                    tdRank.innerHTML = "Giỏi";
+                } else if (average >= 6.5 && average < 8.0) {
+                    //In ra học lực vào id của ô (td) trong hàng (tr) đó
+                    tdRank.innerHTML = "Khá";
+                } else if (average >= 5.0 && average < 6.5) {
+                    //In ra học lực vào id của ô (td) trong hàng (tr) đó
+                    tdRank.innerHTML = "Trung bình";
+                } else {
+                    //In ra học lực vào id của ô (td) trong hàng (tr) đó
+                    tdRank.innerHTML = "Yếu";
+                }
 
-        //Lấy elelement ID của buton "nhập"
-        let inputButton = document.getElementById("input");
+            }
+        }
+
+        //Lấy element ID của buton "nhập"
+        let InputButton = document.getElementById("input");
         //Gán function + thuộc tính "onclick" button 
-        inputButton.onclick = addRow;
+        InputButton.onclick = addRow;
 
-        //Lấy elelement ID của buton "Tính điểm trung bình"
-        let AverageButton = document.getElementById("caculate-average");
+        //Lấy element ID của buton "Tính điểm trung bình"
+        let AverageButton = document.getElementById("calculate-average");
         //Gán function + thuộc tính "onclick" button 
         AverageButton.onclick = Averange;
 
+        //Lấy element ID của buton "xác định học lực"
+        let RankButton = document.getElementById("determine-rank");
+        //Gán function + thuộc tính "onclick" button 
+        RankButton.onclick = highlightRank;
     </script>
 
 </body>

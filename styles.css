@@ -6,3 +6,8 @@ th,
 td {
     border-radius: 1px solid;
 }
+
+/* Tạo highlight và gán màu vàng vào  */
+.highlight {
+    background-color: yellow;
+}
